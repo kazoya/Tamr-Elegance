@@ -1,0 +1,41 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-dates",
+      "description": "Premium Medjool dates on a luxury plate",
+      "imageUrl": "/لوغو.png",
+      "imageHint": "premium dates"
+    },
+    {
+      "id": "medjool-classic",
+      "description": "Large Medjool dates in a wooden box",
+      "imageUrl": "/مجدول.png",
+      "imageHint": "medjool dates"
+    },
+    {
+      "id": "ajwa-luxury",
+      "description": "Premium Ajwa dates in gold packaging",
+      "imageUrl": "/عجوة.png",
+      "imageHint": "luxury box"
+    },
+    {
+      "id": "sukkari-bulk",
+      "description": "Golden Sukkari dates in a wholesale bag",
+      "imageUrl": "/سكري.png",
+      "imageHint": "golden dates"
+    },
+    {
+      "id": "heritage-desert",
+      "description": "Desert landscape with palm trees",
+      "imageUrl": "/a76fc526f476e78548d47f3b04f72be2.jpg",
+      "imageHint": "palm grove"
+    },
+    {
+      "id": "packaging-box",
+      "description": "Elegant gold and black gift box",
+      "imageUrl": "/صندوق.png",
+      "imageHint": "gift box"
+    }
+  ]
+}
