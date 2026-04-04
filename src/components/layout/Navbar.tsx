@@ -1,12 +1,12 @@
-
 "use client";
 
 import Link from 'next/link';
-import { ShoppingCart, User, Search, Menu, X, Mail, Phone, Command } from 'lucide-react';
+import { ShoppingCart, Search, User, Menu, X, Moon, Sun, Mail, Phone, Command } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from 'next-themes';
 import { auth, googleProvider } from '@/lib/firebase';
 import { signInWithRedirect, onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
 
@@ -17,8 +17,11 @@ export function Navbar() {
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const { totalItems } = useCart();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Listen for Firebase Auth changes
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -74,10 +77,25 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 md:gap-4">
+        <div className="flex items-center gap-2 md:gap-4 flex-row-reverse">
           <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)} className="hidden sm:flex hover:bg-primary/10">
             <Search className="w-5 h-5 text-primary" />
           </Button>
+
+          {mounted && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="hover:bg-primary/10"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-5 h-5 text-primary" />
+              ) : (
+                <Moon className="w-5 h-5 text-primary" />
+              )}
+            </Button>
+          )}
           
           {user ? (
             <div className="relative group cursor-pointer" onClick={handleLogout}>

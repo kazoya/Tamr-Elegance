@@ -28,7 +28,7 @@ export function Hero() {
           priority
           data-ai-hint="premium dates"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/40"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10 text-right">
@@ -42,15 +42,15 @@ export function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-6 block border-r-4 border-primary pr-4"
+            className="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-6 block border-r-4 border-primary pr-4 drop-shadow-md"
           >
             إرث عائلة السلامات الأصيل
           </motion.span>
-          <h1 className="text-6xl md:text-8xl font-headline font-bold text-foreground mb-8 leading-[1.1]">
+          <h1 className="text-6xl md:text-8xl font-headline font-bold text-white drop-shadow-2xl mb-8 leading-[1.1]">
             نختار <span className="text-primary italic">الأفضل</span> <br />
             لمائدتكم الفاخرة
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-xl font-medium">
+          <p className="text-xl md:text-2xl text-white/90 drop-shadow-lg mb-12 leading-relaxed max-w-xl font-medium">
             من قلب مزارعنا إلى بيوتكم، نقدم لكم تشكيلة تمور السلامات التي تجمع بين بركة الأرض ورقي التغليف.
           </p>
           <div className="flex flex-wrap gap-6">
