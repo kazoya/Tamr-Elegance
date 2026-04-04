@@ -69,7 +69,7 @@ export function Navbar() {
           </Link>
           <div className="hidden md:flex items-center gap-8 font-bold">
             <Link href="/catalog" className="text-sm hover:text-primary transition-colors">المتجر</Link>
-            <Link href="/heritage" className="text-sm hover:text-primary transition-colors">تراثنا</Link>
+            <Link href="/#story" className="text-sm hover:text-primary transition-colors">تراثنا</Link>
             <Link href="/wholesale" className="text-sm hover:text-primary transition-colors">طلب الجملة</Link>
           </div>
         </div>
