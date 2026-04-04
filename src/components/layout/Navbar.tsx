@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { auth, googleProvider } from '@/lib/firebase';
-import { signInWithPopup, onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
+import { signInWithRedirect, onAuthStateChanged, signOut, User as FirebaseUser } from 'firebase/auth';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,12 +38,11 @@ export function Navbar() {
   const handleGoogleLogin = async () => {
     setIsLoggingIn(true);
     try {
-      await signInWithPopup(auth, googleProvider);
-      setIsAuthOpen(false); // Close modal on success
+      await signInWithRedirect(auth, googleProvider);
+      // لن نغلق النافذة أو نوقف التحميل هنا، لأن الصفحة ستتحدث وتنتقل لموقع جوجل آلياً
     } catch (error: any) {
       console.error("Login failed", error);
-      alert("عذراً، فشل تسجيل الدخول: " + (error.message || "الرجاء التأكد من تفعيل Google Provider في إعدادات Firebase والسماح بالنوافذ المنبثقة."));
-    } finally {
+      alert("عذراً، فشل التحويل لتسجيل الدخول: " + (error.message || "تأكد من إعدادات Firebase"));
       setIsLoggingIn(false);
     }
   };
