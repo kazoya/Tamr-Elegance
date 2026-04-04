@@ -40,8 +40,9 @@ export function Navbar() {
     try {
       await signInWithPopup(auth, googleProvider);
       setIsAuthOpen(false); // Close modal on success
-    } catch (error) {
+    } catch (error: any) {
       console.error("Login failed", error);
+      alert("عذراً، فشل تسجيل الدخول: " + (error.message || "الرجاء التأكد من تفعيل Google Provider في إعدادات Firebase والسماح بالنوافذ المنبثقة."));
     } finally {
       setIsLoggingIn(false);
     }
