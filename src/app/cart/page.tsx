@@ -9,14 +9,33 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/app/lib/placeholder-images';
 import { motion, AnimatePresence } from 'framer-motion';
+import { auth } from '@/lib/firebase';
+import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
+import { useState, useEffect } from 'react';
 
 export default function CartPage() {
   const { items, totalPrice, updateQuantity, removeFromCart, totalItems } = useCart();
+  const [user, setUser] = useState<FirebaseUser | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleCheckout = () => {
     if (items.length === 0) return;
     
     let orderText = "مرحباً، أود إتمام هذا الطلب من تمور السلامات الأصيلة:\n\n";
+    
+    if (user) {
+      orderText += `👤 معلومات العميل:\n`;
+      orderText += `🔸 الاسم: ${user.displayName || "عميل مميز"}\n`;
+      orderText += `🔸 البريد: ${user.email}\n`;
+      orderText += `-------------------\n\n`;
+    }
+
     items.forEach((item, index) => {
       orderText += `${index + 1}. ${item.name} (${item.weight}) - الكمية: ${item.quantity}\n`;
     });
